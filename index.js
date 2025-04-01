@@ -17,6 +17,10 @@ MongoClient.connect(connectionString)
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     
+    app.get('/', (req, res) => {
+      res.sendFile(__dirname + '/index.html');
+    })
+    
     // get all qoutes
     app.get('/api', (req, res) => {
       db.collection('quotes')
