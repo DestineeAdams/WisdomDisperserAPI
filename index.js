@@ -24,7 +24,7 @@ MongoClient.connect(connectionString)
     
     // get all qoutes
     app.get('/api', (req, res) => {
-      db.collection('quotes')
+      quotesCollection
       .find()
       .toArray()
       .then(results => {
@@ -33,8 +33,19 @@ MongoClient.connect(connectionString)
       .catch(error => console.error(error))
     })
     
+    // get one random document
+    app.get('/api/random', (req, res) => {
+      quotesCollection
+      .aggregate([{ $sample: { size: 1 } }])
+      .toArray()
+      .then(results => {
+        res.json(results)
+      })
+      .catch(error => console.error(error))
+      
     
-    
+    })
+
     // add a quotes to a existing author
     app.put('/api/:quotes/:author',  (req, res) => {
       req.params.author = req.params.author.toLowerCase();

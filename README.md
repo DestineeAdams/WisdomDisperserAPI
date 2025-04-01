@@ -41,6 +41,13 @@ if not add in new quote
 **query:** ```/api```
     
 returns all data in the data base
+
+**query:** ```/api/random```
+    
+returns one random document
+
+
+
     
 ###### PUT
 **query:** ```/api/"quote"/"author"```
