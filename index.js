@@ -27,48 +27,93 @@ MongoClient.connect(connectionString)
       })
       .catch(error => console.error(error))
     })
-  
-
     
-    // add a quote
-    app.post('/api/:quote/:author',  (req, res) => {
-      
-      req.params.quote = req.params.quote.toUpperCase();
-      req.params.author = req.params.author.toUpperCase();
-      
-      const info = req.params;
     
-      console.log(info);
+    
+    // add a quotes to a existing author
+    app.put('/api/:quotes/:author',  (req, res) => {
+      req.params.author = req.params.author.toLowerCase();
+      req.params.quotes = req.params.quotes.toLowerCase();
+            
+      quotesCollection
+      .findOne({'quotes': req.params.quotes,'author': req.params.author} )
+      .then(result => {
+        console.log(result);
+        
+        if(result){
+          res.statusMessage = `not inserted under quotes already exist for that ${req.params.author}`;
+          res.status(204).end();
+          
+       
+        }
+        
+        else {
+             quotesCollection
+          .updateOne({ 'author': req.params.author}, { $push:{'quotes': req.params.quotes }})
+          .then(result => {
+              // console.log(result);
+              console.log(req.body);
+              
+              res.statusMessage = `quotes inserted under ${req.params.author}`;
+              res.status(200).end();
+          })  
+          .catch(error => console.error(error))
+        }
       
+      })
+      .catch(error => console.error(error))
+    })
+    
+    
+    // add a quotes to a new author
+    app.post('/api/:quotes/:author',  (req, res) => {
+      req.params.quotes = req.params.quotes.toLowerCase();
+      req.params.author = req.params.author.toLowerCase();
       
       quotesCollection
-        .findOne({'quote': info.quote})
+        .findOne({'quotes': req.params.quotes, 'author': req.params.author})
         .then(result => {
           console.log(result);
           
           if (result) {
-          
-            res.statusMessage = "quotes is already in database";
+            res.statusMessage = "quote is already in database";
             res.status(204).end();
-          } else {
+          } 
+          else {
             quotesCollection
-              .insertOne(info)
+              .findOne({'author': req.params.author})
               .then(result => {
                 console.log(result)
+                
+                
+                if (result) {
+                  res.statusMessage = "author is already in database use put with this endpoint add a quote";
+                  res.status(204).end();
+                }   
+                else {
+                  quotesCollection
+                    .insertOne({"quotes":[req.params.quotes], "author":req.params.author, "rating":10})
+                    .then(result => {
+                      console.log(result)
+                    })
+                    .catch(error => console.error(error))
+                    
+                    res.statusMessage = "added to data base";
+                    res.status(200).end();
+                    
+                } 
+            
               })
-              .catch(error => console.error(error))
+              .catch(error => console.error(error));
               
-            res.statusMessage = "added to data base";
-            res.status(200).end();
-
+          
           }
+          
         })
         .catch(error => console.error(error))
     
-   
-    
     })
-    
+  
     app.listen(process.env.PORT, () => {
       console.log(`listening on http://localhost:${process.env.PORT} 👍🏾`);
     })
