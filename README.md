@@ -47,8 +47,6 @@ checks if author already is in database
 if so checks quote is already is in database
 if note add quote to array
     
-* *this query can add to new documents to data if author didn't exist will remove that bug in future*
-
 ###### DELETE
 *coming soon*
 
