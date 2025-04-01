@@ -1,7 +1,7 @@
 # WisdomDisperserAPI
 api for the The Wisdom disperser project
 
-
+Tech used: JavaScript, node.js, mongodb, express, dotenv
 
 ### How the data is oganized
     {
@@ -30,7 +30,7 @@ api for the The Wisdom disperser project
 ### methods
 
 ###### POST
-    ** query: ** ```/api/:quote/:author```
+**query:** ```/api/"quote"/"author"```
     
 checks if quote already is in database if so piont user to use the PUT query instead
 if not add in new quote
@@ -41,7 +41,7 @@ if not add in new quote
 returns all data in the data base
     
 ###### PUT
-**query:** ```/api/:quote/:author```
+**query:** ```/api/"quote"/"author"```
     
 checks if author already is in database 
 if so checks quote is already is in database
@@ -50,7 +50,7 @@ if note add quote to array
 * *this query can add to new documents to data if author didn't exist will remove that bug in future*
 
 ###### DELETE
-    coming soon
+*coming soon*
 
 
 ---
