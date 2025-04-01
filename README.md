@@ -3,7 +3,7 @@ api for the The Wisdom disperser project
 
 Tech used: JavaScript, node.js, mongodb, express, dotenv
 
-### How the data is oganized
+## How the data is oganized
     {
         "_id":{""},
         
@@ -27,7 +27,7 @@ Tech used: JavaScript, node.js, mongodb, express, dotenv
 
 
 
-### methods
+## http methods
 
 ###### POST
 **query:** ```/api/"quote"/"author"```
@@ -51,9 +51,10 @@ if note add quote to array
 *coming soon*
 
 
----
+## Optimizations
+find a way to make sure offensive language isn't added
 
-### sourceing
+## sourceing
 right now the data is sourced form various places on the internet
 - https://parade.com/1100530/marynliles/african-proverbs/
 - https://medium.com/illumination/50-african-proverbs-and-wise-sayings-with-their-meanings-aac8e8fcd920
