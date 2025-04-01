@@ -7,10 +7,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const connectionString = `mongodb+srv://${process.env.mongodbUSERNAME}:${process.env.mongodbPASS}@cluster0.rusjhfg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const port = process.env.PORT || 4000;
 
 MongoClient.connect(connectionString)
   .then(client => {
-    console.log('Connected to Database 👍🏾');
+    console.log('Connected to Database');
     const db = client.db('wisdom');
     const quotesCollection = db.collection('quotes');
     
@@ -120,8 +121,8 @@ MongoClient.connect(connectionString)
     
     
   
-    app.listen(process.env.PORT, () => {
-      console.log(`listening on http://localhost:${process.env.PORT} 👍🏾`);
+    app.listen(port, () => {
+      console.log(`listening on http://localhost:${port}`);
     })
 
 
