@@ -63,7 +63,7 @@ if note add quote to array
 
 
 ## Optimizations
-find a way to make sure offensive language isn't added
+ - Implement a system to prevent offensive language from being added to the data base
 
 ## sourceing
 right now the data is sourced form various places on the internet
