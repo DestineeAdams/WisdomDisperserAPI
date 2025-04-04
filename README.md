@@ -3,6 +3,8 @@ api for the The Wisdom disperser project
 
 **see project running here:** https://wisdomdisperserapi.onrender.com
 
+**related projects**: https://the-wisdom-dispenser.onrender.com
+
 **Tech used:** JavaScript, node.js, mongodb, express, dotenv
 
 ## How the data is oganized
