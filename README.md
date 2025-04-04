@@ -5,7 +5,7 @@ api for the The Wisdom disperser project
 
 **related projects**: https://the-wisdom-dispenser.onrender.com
 
-**Tech used:** JavaScript, node.js, mongodb, express, dotenv
+**Tech used:** JavaScript, node.js, mongodb, express, dotenv, API, REST API, CRUD
 
 ## How the data is oganized
     {
