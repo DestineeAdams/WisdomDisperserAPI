@@ -1,7 +1,7 @@
 # WisdomDisperserAPI
 api for the The Wisdom disperser project
 
-**see project running here:** https://wisdomdisperserapi.onrender.com
+**see project running here:** https://wisdomdisperserapi.onrender.com ✨
 
 **related projects**: https://the-wisdom-dispenser.onrender.com
 
