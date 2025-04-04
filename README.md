@@ -1,5 +1,5 @@
-# WisdomDisperserAPI
-api for the The Wisdom disperser project
+# Wisdom dispenser API
+The Wisdom dispenser API provides a platform for managing quotes. Allows users to add, retrieve, update, and randomly fetch quotes by authors, enabling easy integration into applications.(look at related projects for an example of integration)
 
 **see project running here:** https://wisdomdisperserapi.onrender.com ✨
 
