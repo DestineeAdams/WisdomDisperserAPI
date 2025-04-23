@@ -59,6 +59,13 @@ if so checks quote is already is in database
 if note add quote to array
     
 ###### DELETE
+**query:** ```/api/del/"quote"/"author"```
+
+*coming soon*
+
+###### PUT
+**query:** ```/api/rate/"quote"/"author"```
+
 *coming soon*
 
 
