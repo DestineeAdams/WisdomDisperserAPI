@@ -1,80 +1,67 @@
-# Wisdom dispenser API
-Handles creating, updating, and fetching quotes, including a random quote endpoint. Perfect for integration into other projects or services.
+# Wisdom Dispenser API  
+Handles creating, updating, and fetching quotes including a random quote endpoint. Perfect for integration into other projects or services.
 
-**see project running here:** https://wisdomdisperserapi.onrender.com ✨
+**See project running here:** https://wisdomdisperserapi.onrender.com ✨  
+**Related projects:** https://the-wisdom-dispenser.onrender.com
 
-**related projects**: https://the-wisdom-dispenser.onrender.com
+**Tech used:** JavaScript, Node.js, MongoDB, Express, dotenv
 
-**Tech used:** JavaScript, node.js, mongodb, express, dotenv
+## How the Data Is Organized
 
-## How the data is oganized
-    {
-        "_id":{""},
-        
-        "quotes":
-            [
-            "jen was here",
-            "hello world"
-            ],
-            
-        "author":"jen",
-        
-        "rating":
-            {
-            "$numberInt":"10"
-            }
-    }
-    
- 
-* *every rating starts out at ten*
-* *every string entry tranfered to lower case*
+```json
+{
+  "_id": "",
 
+  "quotes": [
+    "jen was here",
+    "hello world"
+  ],
+  
+  "author": "jen",
+  
+  "rating": {
+    "$numberInt": "10"
+  }
+}
+```
 
+- *Every rating starts out at ten.*  
+- *Every string entry is transferred to lowercase.*
 
-## http methods
+## HTTP Methods
 
-###### POST
-**query:** ```/api/"quote"/"author"```
-    
-checks if quote already is in database if so piont user to use the PUT query instead
-if not add in new quote
-    
-###### GET
-**query:** ```/api```
-    
-returns all data in the data base
+### `POST`  
+**Endpoint:** `/api/"quote"/"author"`  
+- Checks if the quote already exists in the database.  
+  - If it does, the user is pointed to use the `PUT` method instead.  
+  - If not, the quote is added.
 
-**query:** ```/api/random```
-    
-returns one random document
+### `GET`  
+**Endpoint:** `/api`  
+- Returns all data in the database.
 
+**Endpoint:** `/api/random`  
+- Returns one random document.
 
+### `PUT`  
+**Endpoint:** `/api/"quote"/"author"`  
+- Checks if the author exists in the database.  
+  - If so, checks whether the quote already exists.  
+  - If not, adds the quote to the author's quote array.
 
-    
-###### PUT
-**query:** ```/api/"quote"/"author"```
-    
-checks if author already is in database 
-if so checks quote is already is in database
-if note add quote to array
-    
-###### DELETE
-**query:** ```/api/del/"quote"/"author"```
+**Endpoint:** `/api/rate/"quote"/"author"`  
+- *Coming soon*
 
-*coming soon*
-
-###### PUT
-**query:** ```/api/rate/"quote"/"author"```
-
-*coming soon*
-
+### `DELETE`  
+**Endpoint:** `/api/del/"quote"/"author"`  
+- *Coming soon*
 
 ## Optimizations
- - Implement a system to prevent offensive language from being added to the data base
- - schema need to be restructured
+- Implement a system to prevent offensive language from being added to the database.  
+- Restructure the schema for scalability and flexibility.
 
-## sourceing
-right now the data is sourced form various places on the internet
-- https://parade.com/1100530/marynliles/african-proverbs/
-- https://medium.com/illumination/50-african-proverbs-and-wise-sayings-with-their-meanings-aac8e8fcd920
+## Sourcing  
+Right now, the data is sourced from various places on the internet:  
+- https://parade.com/1100530/marynliles/african-proverbs/  
+- https://medium.com/illumination/50-african-proverbs-and-wise-sayings-with-their-meanings-aac8e8fcd920  
 - https://www.azquotes.com/quotes/topics/wisdom.html
