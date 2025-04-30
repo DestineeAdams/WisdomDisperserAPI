@@ -57,11 +57,5 @@ Handles creating, updating, and fetching quotes including a random quote endpoin
 - *Coming soon*
 
 ## Optimizations
-- Implement a system to prevent offensive language from being added to the database.  
-- Restructure the schema for scalability and flexibility.
-
-## Sourcing  
-Right now, the data is sourced from various places on the internet:  
-- https://parade.com/1100530/marynliles/african-proverbs/  
-- https://medium.com/illumination/50-african-proverbs-and-wise-sayings-with-their-meanings-aac8e8fcd920  
-- https://www.azquotes.com/quotes/topics/wisdom.html
+- [ ] Implement a system to prevent offensive language from being added to the database.  
+- [ ] Restructure the schema for scalability and flexibility.
