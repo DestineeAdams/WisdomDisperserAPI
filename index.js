@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 
+require('dotenv').config({ path: "./config/.env" });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
