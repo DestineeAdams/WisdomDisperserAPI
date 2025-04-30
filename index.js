@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
-require('dotenv').config();
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -11,15 +11,23 @@ const port = process.env.PORT || 4000;
 
 MongoClient.connect(connectionString)
   .then(client => {
+  
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
+    
     console.log('Connected to Database');
     const db = client.db('wisdom');
     const quotesCollection = db.collection('quotes');
     
-    app.use(express.urlencoded({ extended: true }));
-    app.use(express.json());
+    //Using EJS for views
+    app.set("view engine", "ejs");
     
+    //Static Folder
+    app.use(express.static("public"));
+    
+    // home route
     app.get('/', (req, res) => {
-      res.sendFile(__dirname + '/index.html');
+      res.render('index.ejs');
     })
     
     // get all qoutes
@@ -42,8 +50,6 @@ MongoClient.connect(connectionString)
         res.json(results)
       })
       .catch(error => console.error(error))
-      
-    
     })
 
     // add a quotes to a existing author
@@ -54,21 +60,16 @@ MongoClient.connect(connectionString)
       quotesCollection
       .findOne({'quotes': req.params.quotes,'author': req.params.author} )
       .then(result => {
-        console.log(result);
         
         if(result){
           res.statusMessage = `not inserted under quotes already exist for that ${req.params.author}`;
           res.status(204).end();
-          
-       
         }
         
         else {
              quotesCollection
           .updateOne({ 'author': req.params.author}, { $push:{'quotes': req.params.quotes }})
           .then(result => {
-              // console.log(result);
-              console.log(req.body);
               
               res.statusMessage = `quotes inserted under ${req.params.author}`;
               res.status(200).end();
@@ -89,7 +90,6 @@ MongoClient.connect(connectionString)
       quotesCollection
         .findOne({'quotes': req.params.quotes, 'author': req.params.author})
         .then(result => {
-          console.log(result);
           
           if (result) {
             res.statusMessage = "quote is already in database";
@@ -99,7 +99,6 @@ MongoClient.connect(connectionString)
             quotesCollection
               .findOne({'author': req.params.author})
               .then(result => {
-                console.log(result)
                 
                 
                 if (result) {
@@ -109,9 +108,6 @@ MongoClient.connect(connectionString)
                 else {
                   quotesCollection
                     .insertOne({"quotes":[req.params.quotes], "author":req.params.author, "rating":10})
-                    .then(result => {
-                      console.log(result)
-                    })
                     .catch(error => console.error(error))
                     
                     res.statusMessage = "added to data base";
@@ -129,8 +125,7 @@ MongoClient.connect(connectionString)
         .catch(error => console.error(error))
     
     })
-    
-    
+ 
   
     app.listen(port, () => {
       console.log(`listening on http://localhost:${port}`);

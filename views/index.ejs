@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisdom Disperser API</title>
+</head>
+<body>
+    <h1>Wisdom Disperser API</h1>
+    
+    <a href="https://github.com/DestineeAdams/WisdomDisperserAPI"> see git repo here</a>
+    
+    <h3>How the data is oganized</h3>
+    
+    <code>
+            { <br>
+                "_id":{""}, <br>
+                
+                "quotes": <br>
+                
+                    [ <br>
+                    "jen was here", <br>
+                    "hello world" <br>
+                    ], <br>
+                    
+                "author":"jen", <br>
+                
+                "rating": <br>
+                    { <br>
+                    "$numberInt":"10" <br> 
+                    } <br>
+            } <br>
+    </code>
+    
+    <ul>
+        <li>
+            <i>every rating starts out at ten</i>
+        </li>
+        
+        <li>
+            <i>every string entry tranfered to lower case</i>
+        </li>
+    </ul>
+    
+    <hr>
+    
+    <h3>http methods</h3>
+    
+    <h6>POST</h6>
+    <p><b>Query:</b> <code>/api/"quote"/"author"</code></p>
+    <p>checks if quote already is in database if so piont user to use the PUT query instead if not add in new quote</p>
+    
+    <h6>GET</h6>
+    <p><b>Query:</b> <code>/api</code></p>
+    <p>returns all data in the data base</p>
+    
+    <h6>GET</h6>
+    <p><b>Query:</b> <code>/api/random</code></p>
+    <p>returns one random document</p>
+    
+    <h6>PUT</h6>
+    <p><b>Query:</b> <code>/api/"quote"/"author"</code></p>
+    <p>checks if author already is in database if so checks quote is already is in database if note add quote to array</p>
+    
+    <h6>DELETE</h6>
+    <p><b>Query:</b> <code>  </code></p>
+    <p><i>coming soon</i></p>
+    
+    
+    
+</body>
+</html>
