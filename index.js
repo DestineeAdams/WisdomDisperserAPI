@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const connectionString = `mongodb+srv://${process.env.mongodbUSERNAME}:${process.env.mongodbPASS}@cluster0.rusjhfg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8080;
 
 MongoClient.connect(connectionString)
   .then(client => {
